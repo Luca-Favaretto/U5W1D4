@@ -16,8 +16,14 @@ public class ItemService {
     ItemDAO itemDAO;
 
     public void save(Item i) {
-        itemDAO.save(i);
-        log.info("Item " + i + " save!");
+        if (itemDAO.existsById(i.getId())) {
+            itemDAO.save(i);
+            log.info("Item " + i + " save!");
+        } else {
+            log.info("Item already exist!");
+        }
+
+
     }
 
     public Item findById(long itemId) throws ItemNotFoundException {

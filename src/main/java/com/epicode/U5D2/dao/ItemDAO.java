@@ -20,5 +20,7 @@ public interface ItemDAO extends JpaRepository<Item, Long> {
 
     @Query("SELECT d FROM Drink d WHERE d.name=:name")
     List<Drink> findDrinkByName(String name);
+
+    boolean existsById(String id);
 }
 
